@@ -36,10 +36,7 @@ class Server extends Thread{
   // We don't actually care how this works
   private static int countMoney(){
     int amountcur=((int)(Math.random()*1000)); 
-    if (Math.random()>0.5) 
-      amount-=amountcur;   
-    else
-      amount+=amountcur;
+    amount += amountcur;
     return amount;
   }
 }

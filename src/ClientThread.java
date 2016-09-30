@@ -7,6 +7,7 @@ import java.lang.*;
 class ClientThread extends Thread{ 
   private DataInputStream inputStream = null; 
   private Socket socket = null;
+  private static int commonMoney = 0;
 
   public ClientThread() throws IOException { 
     socket = new Socket("localhost", Server.PORT ); 
@@ -18,12 +19,16 @@ class ClientThread extends Thread{
     while (true) {
       try { 
         String msg = inputStream.readLine();
-        if( msg==null ) break;
-        System.out.println(msg);        
+        if( msg != null ) { 
+          System.out.println(msg);        
+          commonMoney += 1;
+          System.out.println(commonMoney);        
+        }
+        else{
+          break;
+        }
       } 
-      catch(Exception e){ 
-        System.out.println("ERRSOCK+"+e); 
-      }
+      catch(Exception e){ System.out.println("ERRSOCK+"+e); }
     } 
   }
 
