@@ -29,15 +29,12 @@ class Server extends Thread{
 
   private static void processRequest( Socket socket ) throws IOException{
     printStream= new PrintStream(socket.getOutputStream());
-    printStream.println( "The number is:" + Integer.toString( countMoney()) );
+    printStream.println( Integer.toString( getMoney() ) ) ;
     printStream.flush(); // push to socket
   }
 
-  // We don't actually care how this works
-  private static int countMoney(){
-    int amountcur=((int)(Math.random()*1000)); 
-    amount += amountcur;
-    return amount;
+  private static int getMoney(){
+    return ((int)(Math.random()*1000));
   }
 }
 

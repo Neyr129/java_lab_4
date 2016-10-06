@@ -20,9 +20,10 @@ class ClientThread extends Thread{
       try { 
         String msg = inputStream.readLine();
         if( msg != null ) { 
-          System.out.println(msg);        
-          commonMoney += 1;
-          System.out.println(commonMoney);        
+          System.out.println(msg + " added to the Account"  );        
+          commonMoney += Integer.parseInt(msg);
+          Application.jLabel.setText(String.valueOf(commonMoney));
+          System.out.println( "account is: "+ commonMoney);        
         }
         else{
           break;
