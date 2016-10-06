@@ -29,7 +29,9 @@ class Server extends Thread{
 
   private static void processRequest( Socket socket ) throws IOException{
     printStream= new PrintStream(socket.getOutputStream());
-    printStream.println( Integer.toString( getMoney() ) ) ;
+    int money =  getMoney();
+    printStream.println( Integer.toString( money ) );
+    Application.jLabel.setText("sent " + String.valueOf(money) + " money");
     printStream.flush(); // push to socket
   }
 

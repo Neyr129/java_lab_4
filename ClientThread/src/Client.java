@@ -3,18 +3,16 @@ import java.net.*;
 import java.awt.*;
 import java.lang.*;
 
-// Client thread
-class ClientThread extends Thread{ 
+class Client extends Thread{ 
   private DataInputStream inputStream = null; 
   private Socket socket = null;
   private static int commonMoney = 0;
 
-  public ClientThread() throws IOException { 
-    socket = new Socket("localhost", Server.PORT ); 
+  public Client() throws IOException { 
+    socket = new Socket("localhost", 2525); 
     inputStream = new DataInputStream( socket.getInputStream() ); // Socket reader
   }
   
-  // Thread start
   public void run(){ 
     while (true) {
       try { 
@@ -22,7 +20,7 @@ class ClientThread extends Thread{
         if( msg != null ) { 
           System.out.println(msg + " added to the Account"  );        
           commonMoney += Integer.parseInt(msg);
-          Application.jLabel.setText(String.valueOf(commonMoney));
+          ClientThread.jLabel.setText(String.valueOf(commonMoney));
           System.out.println( "account is: "+ commonMoney);        
         }
         else{
